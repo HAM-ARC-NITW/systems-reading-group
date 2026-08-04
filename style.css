@@ -1,0 +1,25 @@
+body {
+    max-width: 100%;
+}
+
+p, li {
+    font-size: 1.15rem;
+}
+
+h2 {
+    margin-top: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+  border-bottom: 1px solid currentColor;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
