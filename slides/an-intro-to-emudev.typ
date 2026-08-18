@@ -25,11 +25,11 @@
 
 == Scope of this presentation
 
-After getting an overview of the different ways emulators are built and also the different ways of software _mimicry_, I would now mainly talk about software emulation in deeper using an interpreter-based #link("https://github.com/0xmukesh/tiny.nes")[NES emulator] as a reference. Initially, I would cover the basics of NES's hardware architecture and later I will map those topics with equivalent code sections to get a better idea on how software emulation is done.
+Initially, I would focus on explaining what emulation is, purpose of emulators, different ways emulators are built and also different ways of software _mimicry_. After that, I would mainly talk about software-based emulation in deep using one of my #link("https://github.com/0xmukesh/tiny.nes")[interpreter-based NES emulator] as a reference. Before jumping into the internals of that emulator, I would first cover the basics of NES hardware architecture and later I will map those topics with the equivalent code sections in the codebase to get a better idea.
 
 #place(center, dy: 10pt, figure(
   image("_assets/tiny-nes.png", width: 300pt),
-  caption: [tiny.nes running Ballon Fight]
+  caption: [tiny.nes running Ballon Fight],
 ))
 
 == What is Emulation?
@@ -43,12 +43,12 @@ In hardware emulation, the target system's circuitry is physically reconstructed
 
 #place(center, dx: -200pt, dy: 5pt, figure(
   image("_assets/fpga-gameboy.png", height: 200pt),
-  caption: [#link("https://eli.lipsitz.net/posts/fpga-gameboy-emulator/")[FPGA based Game Boy emulator]]
+  caption: [#link("https://eli.lipsitz.net/posts/fpga-gameboy-emulator/")[FPGA based Game Boy emulator]],
 ))
 
 #place(center, dx: 140pt, dy: 5pt, figure(
   image("_assets/monster-6502.jpg", width: 300pt),
-  caption: [#link("https://tubetime.us/index.php/2016/05/15/placeholder/")[MOnSter 6502]: Transistor scale replica of MOS 6502]
+  caption: [#link("https://tubetime.us/index.php/2016/05/15/placeholder/")[MOnSter 6502]: Transistor scale replica of MOS 6502],
 ))
 
 == What is Emulation?
@@ -57,12 +57,12 @@ In software emulation, the target system's behavior is simulated by code, withou
 
 #place(center, dx: -200pt, dy: 20pt, figure(
   image("_assets/ps1-web-emulator.png", height: 280pt),
-  caption: [#link("https://github.com/maxpoletaev/nupsx")[nuPSX]: Web-based PS1 emulator running Crash Bandicoot]
+  caption: [#link("https://github.com/maxpoletaev/nupsx")[nuPSX]: Web-based PS1 emulator running Crash Bandicoot],
 ))
 
 #place(center, dx: 200pt, dy: 20pt, figure(
   image("_assets/visual-6502.png", width: 370pt),
-  caption: [#link("https://www.visual6502.org/JSSim/index.html")[Visual 6502]: MOS 6502 emulator at transistor level]
+  caption: [#link("https://www.visual6502.org/JSSim/index.html")[Visual 6502]: MOS 6502 emulator at transistor level],
 ))
 
 == What is Emulation?
@@ -71,12 +71,12 @@ Pokémon Red was originally made for the Game Boy, which uses the *Sharp LR35902
 
 #place(top + left, dy: 130pt, figure(
   image("_assets/pokemon-red-android.png", width: 400pt),
-  caption: [Pokémon Red running on Android]
+  caption: [Pokémon Red running on Android],
 ))
 
 #place(top + right, dy: 130pt, figure(
   image("_assets/pokemon-red-windows-7.jpg", width: 380pt),
-  caption: [Pokémon Red running on Windows 7]
+  caption: [Pokémon Red running on Windows 7],
 ))
 
 == Different ways of software _mimicry_
@@ -99,38 +99,38 @@ There are many different ways to run a program meant for architecture `A` on a c
 
 #place(center, dy: 20pt, figure(
   image("_assets/game-emu-anatomy.png", width: 380pt),
-  caption: [Stripped down anatomy of a game emulator. Based of Von Neumann architecture]
+  caption: [Stripped down anatomy of a game emulator. Based of Von Neumann architecture],
 ))
 
 == Hardware architecture of NES
 
 #place(center, dy: 50pt, figure(
   image("_assets/nes-motherboard-unmarked.webp", width: 400pt),
-  caption: [NES motherboard. Credits: #link("https://www.copetti.org/writings/consoles/nes/")[Rodrigo Copetti]]
+  caption: [NES motherboard. Credits: #link("https://www.copetti.org/writings/consoles/nes/")[Rodrigo Copetti]],
 ))
 
 == Hardware architecture of NES
 
 #place(center, dy: 50pt, figure(
   image("_assets/nes-motherboard-marked.webp", width: 400pt),
-  caption: [Marked version of NES motherboard. Credits: #link("https://www.copetti.org/writings/consoles/nes/")[Rodrigo Copetti]]
+  caption: [Marked version of NES motherboard. Credits: #link("https://www.copetti.org/writings/consoles/nes/")[Rodrigo Copetti]],
 ))
 
 == Hardware architecture of NES
 
-#place(top+left, dy: 50pt, figure(
+#place(top + left, dy: 50pt, figure(
   image("_assets/nes-cartridges.jpg", width: 400pt),
-  caption: [NES cartridges]
+  caption: [NES cartridges],
 ))
 
-#place(top+right, dx: -50pt, dy: 50pt, figure(
+#place(top + right, dx: -50pt, dy: 50pt, figure(
   image("_assets/nes-cartridges-internal-unmarked.webp", width: 250pt),
-  caption: [NES cartridge chip]
+  caption: [NES cartridge chip],
 ))
 
-#place(top+right, dx: -30pt, dy: 200pt, figure(
+#place(top + right, dx: -30pt, dy: 200pt, figure(
   image("_assets/nes-cartridges-internal-marked.webp", width: 250pt),
-  caption: [Marked version of NES cartridge chip]
+  caption: [Marked version of NES cartridge chip],
 ))
 
 == Hardware architecture of NES
@@ -148,17 +148,83 @@ The specifications of the NES are:
 
 The NES uses *memory-mapped I/O*, so interacting with hardware is done entirely by reading from and writing to special addresses in the memory map. Since the NES uses a 16-bit address bus, its total addressable memory space is *64 KB* (\$0000–\$FFFF). More about the individual sound channels and the role of mappers will be covered in later sections.
 
-== Software emulation of NES
+== iNES file format
 
-Before starting to write the interpreter for Ricoh 2A03, we've to first figure out how are the physical cartridges distributed on the internet i.e. knowing the internal of that file format. #link("https://www.nesdev.org/wiki/INES")[iNES] file format is the standard file format for distributing NES and its derivates' games digitally.
+Before looking into the interpreter for Ricoh 2A03, we have to first figure out how are the physical cartridges distributed on the internet. NES games are distributed using a file format called #link("https://www.nesdev.org/wiki/INES")[iNES]. It is a very minimal file format which contains a header and the program code and graphics data is stored in a sequential fashion right after the header.
 
-#place(center, dy: 100pt, figure(
+For extracting the program code and graphics data from the cartridge to a file on the computer, people use ROM dumpers.
+
+#place(center, dx: -150pt, dy: 60pt, figure(
   image("_assets/nes-rom-dumper.jpg", width: 300pt),
-  caption: [NES ROM dumper]
+  caption: [NES ROM dumper],
 ))
+
+#place(center, dx: 200pt, dy: 80pt, figure(
+  image("_assets/custom-n64-rom-dumper.jpg", width: 300pt),
+  caption: [Custom N64 ROM dumper],
+))
+
+== iNES file format
+
+#place(center, dx: -200pt, dy: 20pt, figure(
+  image("_assets/ines.png", height: 370pt),
+  caption: [#link("https://linux.die.net/man/1/xxd")[`xxd`] preview of iNES file],
+))
+
+#place(center, dx: 200pt, dy: 20pt, figure(
+  image("_assets/ines-header.png", width: 350pt),
+  caption: [iNES header],
+))
+
+== CPU
+
+The Ricoh 2A03 is based on the MOS 6502 microprocessor. It is an 8-bit microprocessor, meaning 8 bits is the amount of data it can operate on in a single go as its fundamental unit. It uses a 16-bit address bus, meaning the size of the total address space is 64 KB. Apart from the program counter, stack pointer, and processor status, there are 3 other general purpose registers - `X`, `Y` and `A`. The `A` register is also connected to the ALU, so all the results of arithmetic operations are stored / "accumulated" within it.
+
+(Code walk-through: https://github.com/0xMukesh/tiny.nes/blob/8676d5bb6031344b6ec56c7b152ea3e60982be06/internal/cpu/cpu.go)
+
+#place(center, dx: -150pt, dy: 20pt, figure(
+  image("_assets/nes-cpu.png", width: 500pt),
+  caption: [Ricoh 2A03 memory map and registers],
+))
+
+#place(center, dx: 220pt, dy: 120pt, figure(
+  image("_assets/cpu-status-flags.png", width: 400pt),
+))
+
+== CPU
+
+One of the very interesting aspects of 6502 is its addressing modes. They are different ways an instruction can specify where the operands lives at. 6502 has 13 of them:
+
+- *Implied/Implicit*: No operand needed. The operand / destination can be inferred from the instruction itself. (ex: `CLC`)
+- *Accumulator*: Operates directly on `A` register. (ex: `ASL A`)
+- *Immediate*: Uses 8-bit operand itself as the value, rather than fetching a value from a memory address. (ex: `LDA #$10`)
+- *Zero Page*: Fetches the value from an 8-bit address, i.e. addressing only the first 256 bytes. (ex: `LDA $10`)
+- *Zero Page, X*: Same as zero page but adds the value of `X` register to the zero page address, with wraparound.
+- *Zero Page, Y*: Same as zero page but adds `Y` instead of `X`.
+- *Absolute*: Fetches the value from a full 16-bit address. (ex: `LDA $1234`)
+- *Absolute, X*: Absolute address plus `X` register, useful for indexing into arrays.
+- *Absolute, Y*: Absolute address plus `Y` register.
+- *Indirect*: Operand points to a memory location that holds the actual target address. Used only by `JMP`. (ex: `JMP ($1234)`)
+- *Indexed Indirect (Indirect, X)*: Adds `X` to a zero-page address, then reads a 16-bit address from that location and uses it as the target. (ex: `LDA ($10,X)`)
+- *Indirect Indexed (Indirect), Y*: Reads a 16-bit base address from a zero-page location, then adds `Y` to it to get the target. (ex: `LDA ($10),Y`)
+- *Relative*: Uses a signed 8-bit offset from the current program counter. Used only by branch instructions. (ex: `BEQ $10`)
+
+Ref: https://www.nesdev.org/wiki/CPU_addressing_modes
+
+== CPU
+
+Interrupts are a mechanism via the programmer can signal the CPU to stop what it is currently doing, go handle something more _urgent_ and then come back to where it left off. If interrupts weren't present then the CPU would have to constantly keep polling events from different hardware peripherals, which would waste a lot of CPU cycles and timing wouldn't be accurate as well.
+
+In 6502, there are two kind of interrupts -- ordinary interrupt request (`IRQ`) and non-maskable interrupt (`NMI`). The CPU can choose to ignore the former using the interrupt disable flag in processor status register. `NMI` is used to render the graphics on the screen.
+
+The way interrupts are handled is that CPU currently finishes its instruction and then saves its state by pushing the program counter and processor status flags onto the stack. It then jumps to a fixed location in the memory (interrupt vector) which holds the address of the actual handler. After the interrupt handler is executed, it then executes the `RTI` and restores the CPU state.
 
 == Other interesting stuff
 
 - *Fanatasy consoles*: PICO-8
--  #link("https://andrewkelley.me/post/jamulator.html")[Static recompilation of NES games into native executables via LLVM]
-- #link("https://filthypants.blogspot.com/2010/12/snes-emulation-reaches-another-accuracy.html")[Physically destroying chips to emulate them (SNES coprocessor decapping)]
+- #link(
+    "https://andrewkelley.me/post/jamulator.html",
+  )[Static recompilation of NES games into native executables via LLVM]
+- #link(
+    "https://filthypants.blogspot.com/2010/12/snes-emulation-reaches-another-accuracy.html",
+  )[Physically destroying chips to emulate them (SNES coprocessor decapping)]
