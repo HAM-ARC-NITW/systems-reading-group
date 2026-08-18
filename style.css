@@ -1,8 +1,10 @@
 body {
     max-width: 100%;
+    zoom: 110%;
 }
 
-p, li {
+p,
+li {
     font-size: 1.15rem;
 }
 
@@ -14,12 +16,20 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
-  border-bottom: 1px solid currentColor;
-  padding: 0.5rem 0.75rem;
-  text-align: left;
+th,
+td {
+    border-bottom: 1px solid currentColor;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
 }
 
 tr:last-child td {
     border-bottom: none;
+}
+
+blockquote {
+    border-left: 4px solid #4a90d9;
+    padding-left: 1rem;
+    margin-left: 0;
+    /*color: #444;*/
 }
