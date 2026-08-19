@@ -1,35 +1,112 @@
+@font-face {
+    font-family: "Latin Modern";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src:
+        url("./public/fonts/LM-regular.woff2") format("woff2"),
+        url("./public/fonts/LM-regular.woff") format("woff"),
+        url("./public/fonts/LM-regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: italic;
+    font-weight: normal;
+    font-display: swap;
+    src:
+        url("./public/fonts/LM-italic.woff2") format("woff2"),
+        url("./public/fonts/LM-italic.woff") format("woff"),
+        url("./public/fonts/LM-italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src:
+        url("./public/fonts/LM-bold.woff2") format("woff2"),
+        url("./public/fonts/LM-bold.woff") format("woff"),
+        url("./public/fonts/LM-bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: italic;
+    font-weight: bold;
+    font-display: swap;
+    src:
+        url("./public/fonts/LM-bold-italic.woff2") format("woff2"),
+        url("./public/fonts/LM-bold-italic.woff") format("woff"),
+        url("./public/fonts/LM-bold-italic.ttf") format("truetype");
+}
+
 body {
-    max-width: 100%;
-    zoom: 110%;
+    font-family: "Latin Modern";
+    font-size: 1.1rem;
+    color: hsl(0, 0%, 86%);
+    background-color: hsl(0, 0%, 16%);
+    line-height: 1.8;
 }
 
-p,
-li {
-    font-size: 1.15rem;
+h1 {
+    font-size: 2.7rem;
 }
 
-h2 {
+p {
+    font-size: 1.25rem;
     margin-top: 1rem;
 }
 
-table {
-    border-collapse: collapse;
-}
-
-th,
-td {
-    border-bottom: 1px solid currentColor;
-    padding: 0.5rem 0.75rem;
-    text-align: left;
-}
-
-tr:last-child td {
-    border-bottom: none;
+a,
+a:visited {
+    color: hsl(196, 80%, 77%);
 }
 
 blockquote {
     border-left: 4px solid #4a90d9;
     padding-left: 1rem;
-    margin-left: 0;
-    /*color: #444;*/
+    margin-top: 0;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+h2 + ul {
+    margin-top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+thead tr {
+    border-top: 2px solid hsl(0, 0%, 86%);
+    border-bottom: 2px solid hsl(0, 0%, 86%);
+}
+
+th {
+    padding: 0.6rem 1rem;
+    font-weight: normal;
+}
+
+td {
+    padding: 0.6rem 1rem;
+}
+
+tbody tr {
+    border-bottom: 1px solid hsl(0, 0%, 40%);
+}
+
+.main-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+.header {
+    text-align: center;
 }
