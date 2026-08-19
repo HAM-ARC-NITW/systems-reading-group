@@ -202,4 +202,4 @@ attributionHostsView hosts =
         Html.text ""
 
     else
-        Html.span [] ([ Html.text " -- Managed by " ] ++ List.intersperse (Html.text ", ") (List.map hostView hosts))
+        Html.span [] (Html.text " -- Managed by " :: List.intersperse (Html.text ", ") (List.map hostView hosts))

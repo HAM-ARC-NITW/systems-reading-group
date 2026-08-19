@@ -1,4 +1,4 @@
-module Utils exposing (bold, linebreaks, link)
+module Utils exposing (bold, link)
 
 import Html
 import Html.Attributes exposing (href, target)
@@ -12,8 +12,3 @@ link label url =
 bold : String -> Html.Html msg
 bold msg =
     Html.b [] [ Html.text msg ]
-
-
-linebreaks : Int -> List (Html.Html msg)
-linebreaks number =
-    List.repeat number (Html.br [] [])
