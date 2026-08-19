@@ -16,11 +16,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Install Elm
+        run: |
+          curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.19.2/elm-0.19.2-linux-x64.gz
+          gunzip elm.gz
+          chmod +x elm
+          sudo mv elm /usr/local/bin/
+          elm --version
+
       - name: Build Elm artifact
-        uses: jorelali/setup-elm@v6
-        with:
-          elm-version: 0.19.2
-      - run: elm make src/Main.elm --output=./build/main.js --optimize
+        run: elm make src/Main.elm --output=./build/main.js --optimize
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
