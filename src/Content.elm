@@ -177,9 +177,9 @@ sessionsView =
         |> List.map
             (\s ->
                 Html.tr []
-                    [ Html.th [] [ Html.text s.date ]
-                    , Html.th [] [ Html.text s.title ]
-                    , Html.th [] [ hostView s.host ]
+                    [ Html.td [] [ Html.text s.date ]
+                    , Html.td [] [ Html.text s.title ]
+                    , Html.td [] [ hostView s.host ]
                     ]
             )
 

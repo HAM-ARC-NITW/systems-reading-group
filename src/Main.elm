@@ -2,19 +2,17 @@ module Main exposing (main)
 
 import Content
 import Html
-import Html.Attributes exposing (class)
 import Utils
 
 
 main : Html.Html msg
 main =
-    Html.div [ class "main-container" ]
-        [ header, body ]
+    Html.main_ [] [ header, body ]
 
 
 header : Html.Html msg
 header =
-    Html.h1 [ class "header" ] [ Html.text "Systems Reading Group" ]
+    Html.h1 [] [ Html.text "Systems Reading Group" ]
 
 
 body : Html.Html msg
@@ -28,7 +26,7 @@ body =
 
 description : Html.Html msg
 description =
-    Html.div [ class "section" ]
+    Html.div []
         [ Html.p [] aboutParagraph
         , Html.p []
             [ Html.text "Not sure what systems engineering or reading are? Check "
@@ -81,7 +79,7 @@ quote =
 
 topics : Html.Html msg
 topics =
-    Html.div [ class "section" ]
+    Html.div []
         [ Html.h2 [] [ Html.text "What we explore" ]
         , Html.ul []
             Content.topicsView
@@ -94,19 +92,17 @@ topics =
 
 schedule : Html.Html msg
 schedule =
-    Html.div [ class "section" ]
+    Html.div []
         [ Html.h2 [] [ Html.text "Schedule" ]
-        , Html.div [ class "table-wrapper" ]
-            [ Html.table []
-                [ Html.thead []
-                    [ Html.tr []
-                        [ Html.th [] [ Utils.bold "Date" ]
-                        , Html.th [] [ Utils.bold "Topic" ]
-                        , Html.th [] [ Utils.bold "Hosted by" ]
-                        ]
+        , Html.table []
+            [ Html.thead []
+                [ Html.tr []
+                    [ Html.th [] [ Html.text "Date" ]
+                    , Html.th [] [ Html.text "Topic" ]
+                    , Html.th [] [ Html.text "Hosted by" ]
                     ]
-                , Html.tbody [] Content.sessionsView
                 ]
+            , Html.tbody [] Content.sessionsView
             ]
         ]
 
@@ -117,7 +113,7 @@ schedule =
 
 resources : Html.Html msg
 resources =
-    Html.div [ class "section" ]
+    Html.div []
         [ Html.h2 [] [ Html.text "Resources" ]
         , Html.ul [] Content.resourcesView
         ]
@@ -129,7 +125,7 @@ resources =
 
 attributions : Html.Html msg
 attributions =
-    Html.div [ class "section" ]
+    Html.div []
         [ Html.h2 [] [ Html.text "Attributions" ]
         , Html.p [] [ Html.text "This reading group draws inspiration from the following communities, and we're grateful to them: " ]
         , Html.ul [] Content.attributionsView
