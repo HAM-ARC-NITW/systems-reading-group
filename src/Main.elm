@@ -28,12 +28,16 @@ body =
 
 description : Html.Html msg
 description =
-    Html.div []
+    Html.div [ class "section" ]
         [ Html.p [] aboutParagraph
         , Html.p []
             [ Html.text "Not sure what systems engineering or reading are? Check "
             , Utils.link "overview" "./public/pdfs/overview.pdf"
             , Html.text " document."
+            , Html.br [] []
+            , Html.text "Sounds interesting? Join us on "
+            , Utils.link "WhatsApp" "https://chat.whatsapp.com/HQYSDQBsCEr160LrH9Qb2b?s=cl&p=a&ilr=4"
+            , Html.text ", where most of our discussions take place apart from the IRL sessions which happen at NIT Warangal campus."
             ]
         , quote
         ]
@@ -77,7 +81,7 @@ quote =
 
 topics : Html.Html msg
 topics =
-    Html.div []
+    Html.div [ class "section" ]
         [ Html.h2 [] [ Html.text "What we explore" ]
         , Html.ul []
             Content.topicsView
@@ -90,17 +94,19 @@ topics =
 
 schedule : Html.Html msg
 schedule =
-    Html.div []
+    Html.div [ class "section" ]
         [ Html.h2 [] [ Html.text "Schedule" ]
-        , Html.table []
-            [ Html.thead []
-                [ Html.tr []
-                    [ Html.th [] [ Utils.bold "Date" ]
-                    , Html.th [] [ Utils.bold "Topic" ]
-                    , Html.th [] [ Utils.bold "Hosted by" ]
+        , Html.div [ class "table-wrapper" ]
+            [ Html.table []
+                [ Html.thead []
+                    [ Html.tr []
+                        [ Html.th [] [ Utils.bold "Date" ]
+                        , Html.th [] [ Utils.bold "Topic" ]
+                        , Html.th [] [ Utils.bold "Hosted by" ]
+                        ]
                     ]
+                , Html.tbody [] Content.sessionsView
                 ]
-            , Html.tbody [] Content.sessionsView
             ]
         ]
 
@@ -111,7 +117,7 @@ schedule =
 
 resources : Html.Html msg
 resources =
-    Html.div []
+    Html.div [ class "section" ]
         [ Html.h2 [] [ Html.text "Resources" ]
         , Html.ul [] Content.resourcesView
         ]
@@ -123,7 +129,7 @@ resources =
 
 attributions : Html.Html msg
 attributions =
-    Html.div []
+    Html.div [ class "section" ]
         [ Html.h2 [] [ Html.text "Attributions" ]
         , Html.p [] [ Html.text "This reading group draws inspiration from the following communities, and we're grateful to them: " ]
         , Html.ul [] Content.attributionsView

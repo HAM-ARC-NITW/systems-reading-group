@@ -19,7 +19,7 @@ type alias Topic =
 
 type alias Session =
     { date : String
-    , topic : String
+    , title : String
     , host : Host
     }
 
@@ -39,7 +39,7 @@ type alias Attribution =
 
 readingGroupHosts : List Host
 readingGroupHosts =
-    [ Host "Mukesh" "https://0xmukesh.github.io"
+    [ Host "Mukesh" "https://mukesh.0xc84.fyi"
     , Host "Saket" "https://www.linkedin.com/in/saket-modi321"
     ]
 
@@ -82,11 +82,11 @@ topics =
 sessions : List Session
 sessions =
     [ { date = "16th August 2026"
-      , topic = "An intro to emulation develoment"
+      , title = "An intro to emulation develoment"
       , host = findReadingGroupHost "Mukesh"
       }
     , { date = "16th August 2026"
-      , topic = "A deep dive into WebSocket protocol"
+      , title = "A deep dive into WebSocket protocol"
       , host = findReadingGroupHost "Saket"
       }
     ]
@@ -178,7 +178,7 @@ sessionsView =
             (\s ->
                 Html.tr []
                     [ Html.th [] [ Html.text s.date ]
-                    , Html.th [] [ Html.text s.topic ]
+                    , Html.th [] [ Html.text s.title ]
                     , Html.th [] [ hostView s.host ]
                     ]
             )
