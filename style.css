@@ -1,0 +1,183 @@
+@font-face {
+    font-family: "Latin Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src:
+        url(./public/fonts/LM-regular.woff2) format("woff2"),
+        url(./public/fonts/LM-regular.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src:
+        url(./public/fonts/LM-italic.woff2) format("woff2"),
+        url(./public/fonts/LM-italic.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src:
+        url(./public/fonts/LM-bold.woff2) format("woff2"),
+        url(./public/fonts/LM-bold.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Latin Modern";
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src:
+        url(./public/fonts/LM-bold-italic.woff2) format("woff2"),
+        url(./public/fonts/LM-bold-italic.woff) format("woff");
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --body-color: hsl(0, 5%, 10%);
+    --body-bg-color: hsl(210, 20%, 98%);
+    --link-visited: hsl(0, 100%, 33%);
+    --link-focus-outline: hsl(220, 90%, 52%);
+    --table-border-color: black;
+    --border-width-thin: 1.36px;
+    --border-width-thick: 2.27px;
+}
+
+.latex-dark {
+    --body-color: hsl(0, 0%, 86%);
+    --body-bg-color: hsl(0, 0%, 16%);
+    --link-visited: hsl(196, 80%, 77%);
+    --link-focus-outline: hsl(215, 63%, 73%);
+    --table-border-color: white;
+}
+
+html {
+    font-size: 1rem;
+    zoom: 1.1;
+}
+
+body,
+h1,
+h2,
+p,
+ul,
+li {
+    margin: 0;
+}
+
+body {
+    font-family:
+        Latin Modern,
+        Georgia,
+        Cambria,
+        Times New Roman,
+        Times,
+        serif;
+    line-height: 1.8;
+    max-width: 80ch;
+    min-height: 100vh;
+    overflow-x: hidden;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+    color: var(--body-color);
+    background-color: var(--body-bg-color);
+    text-rendering: optimizeLegibility;
+    hyphens: auto;
+}
+
+p {
+    margin-top: 1rem;
+}
+
+a,
+a:visited {
+    color: var(--link-visited);
+    text-decoration-skip-ink: auto;
+}
+
+a:focus {
+    outline-offset: 2px;
+    outline: 2px solid var(--link-focus-outline);
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    margin-bottom: 1.625rem;
+}
+
+h1:first-child {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.7rem;
+    line-height: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 0.8rem;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: auto;
+    max-width: 100%;
+    border-top: var(--border-width-thick) solid var(--table-border-color);
+    border-bottom: var(--border-width-thick) solid var(--table-border-color);
+    overflow-x: auto;
+}
+
+table tr > th[scope="col"] {
+    border-bottom: var(--border-width-thin) solid var(--table-border-color);
+}
+
+table > tbody > tr:first-child > td,
+table > tbody > tr:first-child > th {
+    border-top: var(--border-width-thin) solid var(--table-border-color);
+}
+
+table > tbody > tr:last-child > td,
+table > tbody > tr:last-child > th {
+    border-bottom: var(--border-width-thin) solid var(--table-border-color);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.5rem;
+    line-height: 1.1;
+}
+
+blockquote {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 2.75rem;
+    color: hsl(0, 0%, 64%);
+    font-style: italic;
+}
+
+blockquote::before {
+    content: "\201C";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: hsl(196, 80%, 77%);
+    font-style: normal;
+    font-size: 2.75rem;
+    line-height: 1;
+}
+
+blockquote cite {
+    font-style: normal;
+}

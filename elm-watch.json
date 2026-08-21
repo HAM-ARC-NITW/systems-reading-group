@@ -1,8 +1,0 @@
-{
-  "targets": {
-    "output": {
-      "inputs": ["src/Main.elm"],
-      "output": "build/main.js"
-    }
-  }
-}

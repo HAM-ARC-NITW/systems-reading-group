@@ -5,44 +5,278 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Systems Reading Group</title>
 
-        <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
-        <style>
-            html {
-                zoom: 1.1;
-            }
-
-            blockquote {
-                position: relative;
-                margin: 2rem 0;
-                padding-left: 2.75rem;
-                color: hsl(0, 0%, 64%);
-                font-style: italic;
-            }
-
-            blockquote::before {
-                content: "\201C";
-                position: absolute;
-                top: 0;
-                left: 0;
-                color: hsl(196, 80%, 77%);
-                font-style: normal;
-                font-size: 2.75rem;
-                line-height: 1;
-            }
-
-            blockquote cite {
-                font-style: normal;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
     </head>
-    <body id="page-body">
-        <div id="elm-app"></div>
-    </body>
+    <body>
+        <main>
+            <h1>Systems Reading Group</h1>
 
-    <script src="./build/main.js"></script>
-    <script>
-        var app = Elm.Main.init({
-            node: document.getElementById("elm-app"),
-        });
-    </script>
+            <div>
+                <div>
+                    <p>
+                        A biweekly reading group focused on the internals of
+                        computer systems -- operating systems, databases,
+                        compilers, distributed systems, performance,
+                        optimization techniques and everything in between. Each
+                        session someone presents a paper, a project, or about a
+                        conference talk. Open to everyone, regardless of
+                        experience. Managed by
+                        <a href="https://mukesh.0xc84.fyi" target="_blank"
+                            >Mukesh</a
+                        >,
+                        <a
+                            href="https://www.linkedin.com/in/saket-modi321"
+                            target="_blank"
+                            >Saket</a
+                        >
+                        and folks at
+                        <a
+                            href="https://github.com/ham-arc-nitw"
+                            target="_blank"
+                            >HAM ARC @ NIT Warangal</a
+                        >.
+                    </p>
+                    <p>
+                        Not sure what systems engineering or reading are? Check
+                        <a href="./public/pdfs/overview.pdf" target="_blank"
+                            >overview</a
+                        >
+                        document.
+                        <br />
+                        Sounds interesting? Join us on
+                        <a
+                            href="https://chat.whatsapp.com/HQYSDQBsCEr160LrH9Qb2b?s=cl&amp;p=a&amp;ilr=4"
+                            target="_blank"
+                            >WhatsApp</a
+                        >, where most of our discussions take place apart from
+                        the IRL sessions which happen at NIT Warangal campus.
+                    </p>
+                    <blockquote>
+                        Systems programming is a way of modelling software
+                        development.
+                        <br />
+                        It's not about a category of what you are working on,
+                        it's a way of looking at the problem.
+                        <br />
+                        An excellent systems programmer fully understands the
+                        systems involved.
+                        <br />
+                        --
+                        <cite
+                            ><a
+                                href="https://www.youtube.com/watch?v=Qncdi-Fg0-I"
+                                target="_blank"
+                                >Andrew Kelley</a
+                            ></cite
+                        >
+                    </blockquote>
+                </div>
+
+                <div>
+                    <h2>What we explore</h2>
+                    <ul>
+                        <li>
+                            <b>Programming languages</b>: compilers, parsers,
+                            interpreters, type systems, developer tooling
+                        </li>
+                        <li>
+                            <b>Operating systems</b>: kernels, schedulers,
+                            device drivers, filesystems, eBPF
+                        </li>
+                        <li>
+                            <b>Distributed systems</b>: consensus protocols,
+                            replication, consistency models, gossip protocols
+                        </li>
+                        <li>
+                            <b>Databases</b>: query engines, transaction
+                            processing, storage formats, indexing
+                        </li>
+                        <li>
+                            <b>Performance</b>: SIMD, hardware acceleration,
+                            profiling, parallelism
+                        </li>
+                        <li>
+                            <b>Graphics programming</b>: shaders, ray tracing,
+                            GPU programming, game engines
+                        </li>
+                        <li>
+                            <b>Virtualization</b>: hypervisors, emulators,
+                            microVMs, container runtimes
+                        </li>
+                        <li>
+                            <b>Security</b>: sandboxing, cryptographic
+                            protocols, exploit development, fuzzing
+                        </li>
+                        <li>
+                            <b>Machine learning systems</b>: training
+                            infrastructure, inference engines, model serving
+                        </li>
+                        <li>
+                            <b>Bioinformatics</b>: sequence alignment, genome
+                            assembly, computational biology
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Schedule</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Topic</th>
+                                <th scope="col">Hosted by</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>16th August 2026</td>
+                                <td>An intro to emulation development</td>
+                                <td>
+                                    <a
+                                        href="https://mukesh.0xc84.fyi"
+                                        target="_blank"
+                                        >Mukesh</a
+                                    >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>16th August 2026</td>
+                                <td>A deep dive into WebSocket protocol</td>
+                                <td>
+                                    <a
+                                        href="https://www.linkedin.com/in/saket-modi321"
+                                        target="_blank"
+                                        >Saket</a
+                                    >
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h2>Resources</h2>
+                    <ul>
+                        <li>
+                            <a href="./public/pdfs/overview.pdf" target="_blank"
+                                >Overview</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.youtube.com/watch?v=Qncdi-Fg0-I"
+                                target="_blank"
+                                >Making Systems Programming Accessible - Andrew
+                                Kelley</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2>Attributions</h2>
+                    <p>
+                        This reading group draws inspiration from the following
+                        communities, and we're grateful to them:
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="https://nycsystems.xyz/" target="_blank"
+                                >NYC Systems</a
+                            >
+                            <span>
+                                -- Managed by
+                                <a
+                                    href="https://x.com/ngeloxyz/"
+                                    target="_blank"
+                                    >Angelo Saraceno</a
+                                >,
+                                <a
+                                    href="https://aaronjeline.github.io/"
+                                    target="_blank"
+                                    >Aaron Eline</a
+                                >,
+                                <a
+                                    href="https://x.com/eatonphil"
+                                    target="_blank"
+                                    >Phil Eaton</a
+                                >
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://x.com/BengaluruSys" target="_blank"
+                                >Bengaluru Systems Group</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://ottawasystems.xyz/" target="_blank"
+                                >Ottawa Systems</a
+                            >
+                            <span>
+                                -- Managed by
+                                <a
+                                    href="https://tiny.tilde.website/@pawandubey"
+                                    target="_blank"
+                                    >Pawan Dubey</a
+                                >,
+                                <a
+                                    href="https://tiny.tilde.website/@insom"
+                                    target="_blank"
+                                    >Aaron Brady</a
+                                >
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://asrg-gg.github.io/" target="_blank"
+                                >Arcane Systems Reading Group</a
+                            >
+                            <span>
+                                -- Managed by
+                                <a href="https://www.varsha.sh/" target="_blank"
+                                    >Hari Varsha</a
+                                >
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://atlasdev.club/" target="_blank"
+                                >Atlas @ Amrita Bengaluru</a
+                            >
+                            <span>
+                                -- Managed by
+                                <a
+                                    href="https://adithyanair.com/"
+                                    target="_blank"
+                                    >Aditya Nair</a
+                                >,
+                                <a
+                                    href="https://nithitsuki.com/"
+                                    target="_blank"
+                                    >Nithilan Rameshkumar</a
+                                >,
+                                <a href="https://heftymouse.me/" target="_blank"
+                                    >Nikhil Bharadwaj</a
+                                >
+                            </span>
+                        </li>
+                        <li>
+                            <a
+                                href="https://systems-rg.github.io/"
+                                target="_blank"
+                                >Systems Reading Group @ IIT Delhi</a
+                            >
+                            <span>
+                                -- Managed by
+                                <a
+                                    href="https://abhilash-jindal.com/"
+                                    target="_blank"
+                                    >Abhilash Jindal</a
+                                >
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
